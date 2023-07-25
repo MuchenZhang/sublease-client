@@ -1,0 +1,24 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 10px;
+    height: 100%;
+}
+
+.title { 
+    grid-area: 2 / 2 / 4 / 6; 
+    font-size: 600%;
+    text-align: center;
+}
+.login-btn { 
+    grid-area: 4 / 3 / 5 / 4; 
+    font-size: 200%;
+    text-align: center;
+}
+.sign-up-btn { 
+    grid-area: 4 / 4 / 5 / 5; 
+    font-size: 200%;
+    text-align: center;
+}
