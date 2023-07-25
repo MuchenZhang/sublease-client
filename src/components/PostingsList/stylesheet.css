@@ -1,0 +1,88 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.postings-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.postings-list {
+    flex: 1;
+    padding: 10px;
+    max-height: 800px;
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+}
+
+.postings-list div {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.postings-list div:hover {
+    background-color: #f5f5f5;
+}
+
+.postings-list h3 {
+    margin: 0;  
+}
+
+.post-details {
+    flex: 1;
+    padding: 10px;
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.post-details h2 {
+    margin: 0;
+}
+
+.post-details p {
+    margin-top: 5px;
+}
+
+/* To make the scrollbar look consistent across browsers */
+.postings-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.postings-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.postings-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.search-container {
+    width: auto;
+    align-items: center;
+    margin-bottom: 10px;
+}
+  
+input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}

@@ -7,8 +7,8 @@ class Home extends Component {
             <div >
                 <div class="parent">
                     <div class="title">TITLE</div>
-                    <div class="login-btn">Log in</div>
-                    <div class="sign-up-btn">Sign up</div>
+                    <button class="login-btn">Log in</button>
+                    <button class="sign-up-btn">Sign up</button>
                 </div>
             </div>
         );
