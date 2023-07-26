@@ -73,7 +73,7 @@ html, body {
     background-color: #555;
 }
 
-button {
+.search-btn {
     padding: 8px 16px;
     font-size: 16px;
     background-color: #007bff;
@@ -83,12 +83,12 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.search-btn:hover {
     background-color: #0056b3;
 }
 
 .search-container {
-    width: auto;
+    width: 25%;
     align-items: center;
     margin-bottom: 10px;
 }
@@ -99,4 +99,31 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 10px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.tag button {
+    margin-left: 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.tag-btn {
+    background-color: #d1f6f4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin: 2px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.tag-btn:hover {
+    background-color: #c5f2cd;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import './stylesheet.css';
 
 
@@ -14,9 +15,9 @@ const mockPostings = [
     { id: 18, title: 'Mock Posting 18', date: '2023-08-01', content: 'This is the content of mock posting 18.' },
     { id: 19, title: 'Mock Posting 19', date: '2023-08-02', content: 'This is the content of mock posting 19.' },
     { id: 20, title: 'Mock Posting 20', date: '2023-08-03', content: 'This is the content of mock posting 20.' }
-  ];
+];
 
-
+const tagsData = ['Studio', '2b2b', '4b4b', 'Summer Semester', 'Pet-friendly', 'under $1000', 'Parking Spaces', 'Atlanta'];
 
 const PostingsList = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -29,13 +30,27 @@ const PostingsList = () => {
     const [selectedPost, setSelectedPost] = useState(null);
 
     useEffect(() => {
-        // Simulate API call and set the postings
-        // In a real app, you would call your API to fetch the postings
-        setPostings(mockPostings);
+        fetch('/basic/posts')
+            .then((response) => response.json())
+            .then((data) => setPostings(data))
+            .catch((error) => console.error('Error fetching posts:', error));
     }, []);
 
     const handlePostClick = (post) => {
         setSelectedPost(post);
+    };
+
+    const [selectedTags, setSelectedTags] = useState([]);
+
+    const handleAddTag = (tag) => {
+        if (!selectedTags.includes(tag)) {
+            setSelectedTags((prevTags) => [...prevTags, tag]);
+        }
+        console.log(selectedTags)
+    };
+
+    const handleRemoveTag = (tag) => {
+        setSelectedTags((prevTags) => prevTags.filter((t) => t !== tag));
     };
 
     return (
@@ -47,21 +62,40 @@ const PostingsList = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for postings..."
                 />
-                <button onClick={handleSearch}>Search</button>
+                <button className="search-btn" onClick={handleSearch}>Search</button>
+                <div className="tags-container">
+                    {tagsData.map((tag) => (
+                        <button
+                        key={tag}
+                        className="tag-btn"
+                        onClick={() =>
+                            selectedTags.includes(tag)
+                            ? handleAddTag(tag)
+                            : handleRemoveTag(tag)
+                        }
+                        >
+                        {tag}
+                        </button>
+                    ))}
+                </div>
             </div>
+            
             <div className="postings-list">
                 {postings.map((post) => (
                 <div key={post.id} onClick={() => handlePostClick(post)}>
-                    <h3>{post.title}</h3>
-                    <p>{post.date}</p>
+                    <h3>{post.location}</h3>
                 </div>
                 ))}
             </div>
             <div className="post-details">
                 {selectedPost ? (
                 <>
-                    <h2>{selectedPost.title}</h2>
-                    <p>{selectedPost.content}</p>
+                    <h2>{selectedPost.location}</h2>
+                    <p>City: {selectedPost.city}</p>
+                    <p>Apartment Style: {selectedPost.apartStyle}</p>
+                    <p>Rent: ${selectedPost.rent}</p>
+                    <p>Remarks: {selectedPost.remarks}</p>
+                    <p>Contact: {selectedPost.contact}</p>
                 </>
                 ) : (
                 <p>Select a posting to view details</p>
