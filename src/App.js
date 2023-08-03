@@ -5,12 +5,15 @@ import Home from './components/Home/Home.js';
 import Login from './components/LoginModal/Login.js';
 import HomePage from './components/HomePage/HomePage.js';
 import PostingsList from './components/PostingsList/PostingsList.js';
+import PostingsForm from './components/PostingsForm/PostingsForm.js';
 
 function App() {
   return (
     <div className="App">
-      <NavbarComp />
-      <PostingsList />
+      <PostingsForm />
+
+      {/* <NavbarComp />
+      <PostingsList /> */}
       {/* <HomePage/> */}
       {/* <NavbarComp />
       <Login /> */}

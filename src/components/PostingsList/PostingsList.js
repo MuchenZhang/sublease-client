@@ -3,20 +3,6 @@ import React, { useState, useEffect } from 'react';
 import './stylesheet.css';
 
 
-const mockPostings = [
-    // Replace this with the API result
-    { id: 11, title: 'Mock Posting 11', date: '2023-07-25', content: 'This is the content of mock posting 11.'},
-    { id: 12, title: 'Mock Posting 12', date: '2023-07-26', content: 'This is the content of mock posting 12.' },
-    { id: 13, title: 'Mock Posting 13', date: '2023-07-27', content: 'This is the content of mock posting 13.' },
-    { id: 14, title: 'Mock Posting 14', date: '2023-07-28', content: 'This is the content of mock posting 14.' },
-    { id: 15, title: 'Mock Posting 15', date: '2023-07-29', content: 'This is the content of mock posting 15.' },
-    { id: 16, title: 'Mock Posting 16', date: '2023-07-30', content: 'This is the content of mock posting 16.' },
-    { id: 17, title: 'Mock Posting 17', date: '2023-07-31', content: 'This is the content of mock posting 17.' },
-    { id: 18, title: 'Mock Posting 18', date: '2023-08-01', content: 'This is the content of mock posting 18.' },
-    { id: 19, title: 'Mock Posting 19', date: '2023-08-02', content: 'This is the content of mock posting 19.' },
-    { id: 20, title: 'Mock Posting 20', date: '2023-08-03', content: 'This is the content of mock posting 20.' }
-];
-
 const tagsData = ['Studio', '2b2b', '4b4b', 'Summer Semester', 'Pet-friendly', 'under $1000', 'Parking Spaces', 'Atlanta'];
 
 const PostingsList = () => {
