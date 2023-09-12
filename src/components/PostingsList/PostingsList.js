@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Map from '../Map/Map';
 import './stylesheet.css';
 
 
@@ -82,6 +82,7 @@ const PostingsList = () => {
                     <p>Rent: ${selectedPost.rent}</p>
                     <p>Remarks: {selectedPost.remarks}</p>
                     <p>Contact: {selectedPost.contact}</p>
+                    <Map address={selectedPost.location}/>
                 </>
                 ) : (
                 <p>Select a posting to view details</p>

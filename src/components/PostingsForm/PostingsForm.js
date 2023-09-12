@@ -20,8 +20,45 @@ const PostingsForm = () => {
     const [furniture, setFurniture] = useState('');
     const [remarks, setRemarks] = useState('');
 
+    const [apartStyleError, setApartStyleError] = useState('');
+    const [startDateError, setStartDateError] = useState('');
+    const [endDateError, setEndDateError] = useState('');
+    const [cityError, setCityError] = useState('');
+    const [locationError, setLocationError] = useState('');
+    const [rentError, setRentError] = useState('');
+    const [roommateError, setRoommateError] = useState('');
+    const [petError, setPetError] = useState('');
+    const [furnitureError, setFurnitureError] = useState('');
+
     const handleSubmit = (e) => {
             e.preventDefault();
+
+            // Check for empty fields and display errors
+            if (!apartStyle) setApartStyleError('Apartment Style is required');
+            if (!startDate) setStartDateError('Start Date is required');
+            if (!endDate) setEndDateError('End Date is required');
+            if (!city) setCityError('City is required');
+            if (!location) setLocationError('Location is required');
+            if (!rent) setRentError('Rent is required');
+            if (!roommate) setRoommateError('Roommate selection is required');
+            if (!pet) setPetError('Pet selection is required');
+            if (!furniture) setFurnitureError('Furniture selection is required');
+
+            // If any field is empty, prevent form submission
+            if (
+                !apartStyle ||
+                !startDate ||
+                !endDate ||
+                !city ||
+                !location ||
+                !rent ||
+                !roommate ||
+                !pet ||
+                !furniture
+            ) {
+                return;
+            }
+
             const formData = {
                 apartStyle,
                 startDate,
@@ -47,10 +84,12 @@ const PostingsForm = () => {
                 if (response) {
                   // Request was successful, handle success response
                   console.log('Post successful!');
+                  alert("Successfully Submitted")
                   // You might want to reset the form fields here
                 } else {
                   // Request was not successful, handle error response
                   console.error('Post failed');
+                  alert("Submission Failed")
                 }
               } catch (error) {
                 // Handle any errors that occurred during the request
@@ -63,30 +102,42 @@ const PostingsForm = () => {
         <form className="apartment-form" onSubmit={handleSubmit}>
             <label>
             Apartment Style:
-            <select value={apartStyle} onChange={(e) => setApartStyle(e.target.value)}>
+            <select value={apartStyle} onChange={(e) => {
+                    setApartStyle(e.target.value);
+                    setApartStyleError('');
+                }}>
                 <option value="">Select an option</option>
                 <option value="Studio">Studio</option>
                 <option value="1b1b">1b1b</option>
                 <option value="2b2b">2b2b</option>
             </select>
+            {apartStyleError && <div className="error-message">{apartStyleError}</div>}
             </label>
 
             <label>
                 Start Date:
                 <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => {
+                    setStartDate(date);
+                    setStartDateError('')
+                }}
                 dateFormat="MM/dd/yyyy"
                 />
+                {startDateError && <div className = "error-message">{startDateError}</div>}
             </label>
 
             <label>
                 End Date:
                 <DatePicker
                     selected={endDate}
-                    onChange={(date) => setEndDate(date)}
+                    onChange={(date) => {
+                        setEndDate(date);
+                        setEndDateError('')
+                    }}
                     dateFormat="MM/dd/yyyy"
                 />
+                {endDateError && <div className = "error-message">{endDateError}</div>}
             </label>
 
             <label>
@@ -95,9 +146,13 @@ const PostingsForm = () => {
                 <input
                     type="text"
                     value={city}
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={(e) => {
+                        setCity(e.target.value);
+                        setCityError('')
+                    }}
                     placeholder="Enter city"
                 />
+                {cityError && <div className = "error-message">{cityError}</div>}
             </label>
 
             <label>
@@ -105,9 +160,13 @@ const PostingsForm = () => {
                 <input
                     type="text"
                     value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => {
+                        setLocation(e.target.value);
+                        setLocationError('')
+                    }}
                     placeholder="Enter location"
                 />
+                {locationError && <div className = "error-message">{locationError}</div>}
             </label>
 
             <label>
@@ -115,39 +174,55 @@ const PostingsForm = () => {
                 <input
                     type="number"
                     value={rent}
-                    onChange={(e) => setRent(e.target.value)}
+                    onChange={(e) => {
+                        setRent(e.target.value);
+                        setRentError('')
+                    }}
                     placeholder="Enter rent"
                 />
+                {rentError && <div className = "error-message">{rentError}</div>}
             </label>
 
             <label>
                 Roommate:
-                <select value={roommate} onChange={(e) => setRoommate(e.target.value)}>
+                <select value={roommate} onChange={(e) => {
+                    setRoommate(e.target.value);
+                    setRoommateError('')
+                    }}>
                     <option value="">Select an option</option>
                     <option value="0">No Roommates</option>
                     <option value="1">One Roommate</option>
                     <option value="2">Two Roommates</option>
                 </select>
+                {roommateError && <div className = "error-message">{roommateError}</div>}
             </label>
 
             <label>
                 Pet:
-                <select value={pet} onChange={(e) => setPet(e.target.value)}>
+                <select value={pet} onChange={(e) => {
+                    setPet(e.target.value);
+                    setPetError('')
+                    }}>
                     <option value="">Select an option</option>
                     <option value="0">No Pets</option>
                     <option value="1">One Pet</option>
                     <option value="2">Two Pets</option>
                 </select>
+                {petError && <div className = "error-message">{petError}</div>}
             </label>
 
             <label>
                 Furniture:
-                <select value={furniture} onChange={(e) => setFurniture(e.target.value)}>
+                <select value={furniture} onChange={(e) => {
+                    setFurniture(e.target.value);
+                    setFurnitureError('')
+                    }}>
                     <option value="">Select an option</option>
                     <option value="fullyFurnished">Fully Furnished</option>
                     <option value="partiallyFurnished">Partially Furnished</option>
                     <option value="notFurnished">Not Furnished</option>
                 </select>
+                {furnitureError && <div className = "error-message">{furnitureError}</div>}
             </label>
 
             <label>

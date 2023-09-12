@@ -10,10 +10,11 @@ import PostingsForm from './components/PostingsForm/PostingsForm.js';
 function App() {
   return (
     <div className="App">
-      <PostingsForm />
+      {/* <PostingsForm /> */}
 
-      {/* <NavbarComp />
-      <PostingsList /> */}
+      <NavbarComp />
+      <PostingsList />
+
       {/* <HomePage/> */}
       {/* <NavbarComp />
       <Login /> */}
