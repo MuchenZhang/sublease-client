@@ -1,32 +1,10 @@
 import React, { useEffect } from 'react';
 
 const Map = ({ address }) => {
-    // const geocodeAddress = async (address) => {
-    //     const apiKey = 'AIzaSyBut0RtI15tFwNVUiy7cJmY_dIa58ZbqLQ';
-    //     const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
-
-    //     try {
-    //         const response = await fetch(apiUrl);
-    //         if (!response.ok) {
-    //         throw new Error('Geocoding failed');
-    //         }
-
-    //         const data = await response.json();
-    //         if (data.results.length === 0) {
-    //         throw new Error('No results found for the address');
-    //         }
-
-    //         // Extract the latitude and longitude from the geocoding response
-    //         const { lat, lng } = data.results[0].geometry.location;
-    //         return { lat, lng };
-    //     } catch (error) {
-    //         console.error('Geocoding error:', error);
-    //         return null;
-    //     }
-    //   };
-
+    
 
     useEffect(() => {
+
         const geocoder = new window.google.maps.Geocoder();
         const mapElement = document.getElementById('map');
 
